@@ -1,9 +1,11 @@
 package vinicius_spring_redis.vinicius_spring_redis.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
-import vinicius_spring_redis.vinicius_spring_redis.model.ProductRedisModel;
+import vinicius_spring_redis.vinicius_spring_redis.entity.ProductRedis;
 import vinicius_spring_redis.vinicius_spring_redis.repository.ProductRedisRepository;
 
 @Service
@@ -13,10 +15,15 @@ public class ProductRedisServiceImpl implements ProductRedisService {
 	private final ProductRedisRepository productRedisRepository;
 
 	@Override
-	public ProductRedisModel create(ProductRedisModel product) {
-		var entity = productRedisRepository.save(product.toEntity());
+	public ProductRedis create(ProductRedis product) {
 
-		return new ProductRedisModel(entity.getId(), entity.getNome(), entity.getSobrenome());
+		return productRedisRepository.save(product);
+	}
+
+	@Override
+	public List<ProductRedis> findAll() {
+
+		return productRedisRepository.findAll();
 	}
 
 }

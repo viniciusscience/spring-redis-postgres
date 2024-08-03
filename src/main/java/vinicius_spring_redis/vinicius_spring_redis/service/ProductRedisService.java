@@ -1,8 +1,13 @@
 package vinicius_spring_redis.vinicius_spring_redis.service;
 
-import vinicius_spring_redis.vinicius_spring_redis.model.ProductRedisModel;
+import java.util.List;
+
+import vinicius_spring_redis.vinicius_spring_redis.entity.ProductRedis;
+
 
 public interface ProductRedisService {
 
-	ProductRedisModel create(ProductRedisModel product);
+	ProductRedis create(ProductRedis product);
+
+	List<ProductRedis> findAll();
 }

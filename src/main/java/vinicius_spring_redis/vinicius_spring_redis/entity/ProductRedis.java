@@ -1,8 +1,10 @@
 package vinicius_spring_redis.vinicius_spring_redis.entity;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 import org.springframework.data.redis.core.RedisHash;
+import org.springframework.data.redis.core.index.Indexed;
 
 import jakarta.persistence.Column;
 
@@ -13,10 +15,18 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@RedisHash("ProductRedis")
-public class ProductRedis {
+@RedisHash("product")
+public class ProductRedis implements Serializable {
+
+
+
+	/**
+	 *  
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@org.springframework.data.annotation.Id
+	@Indexed
 	private UUID id;
 
 	@Column(name = "nome", nullable = true)
@@ -25,5 +35,4 @@ public class ProductRedis {
 	@Column(name = "sobrenome", nullable = true)
 	private String sobrenome;
 
-	
 }
